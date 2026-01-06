@@ -19,7 +19,7 @@ form.addEventListener("submit", function (e) {
   let zins = Number(zinsInput.value) / 100;
   let inflation = Number(inflationInput.value) / 100;
 
-  let monatsZins = zins / 12;
+  let monatsZins = Math.pow(1 + zins, 1 / 12) - 1;
 
   let kapital = start;
   let eingezahlt = start;
@@ -129,5 +129,6 @@ function exportPDF() {
 
   pdf.save("Tagesgeld-Sparrechner-Ergebnis.pdf");
 }
+
 
 
