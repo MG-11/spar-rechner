@@ -20,8 +20,10 @@ form.addEventListener("submit", function (e) {
   let inflation = Number(inflationInput.value) / 100;
 
   let monatsZins = Math.pow(1 + zins, 1 / 12) - 1;
+  let monatsInflation = inflation / 12;
 
   let kapital = start;
+  let realKapital = start;
   let eingezahlt = start;
 
   let labels = [];
@@ -33,13 +35,16 @@ form.addEventListener("submit", function (e) {
       kapital += sparrate;
       eingezahlt += sparrate;
       kapital *= (1 + monatsZins);
+
+      realKapital += sparrate;
+      realKapital *= (1 + monatsZins - monatsInflation);
     }
 
     let realwert = kapital / Math.pow(1 + inflation, jahr);
 
     labels.push("Jahr " + jahr);
     nominal.push(kapital.toFixed(2));
-    real.push(realwert.toFixed(2));
+    real.push(realKapital.toFixed(2));
   }
 
   ergebnis.innerHTML =
@@ -129,6 +134,7 @@ function exportPDF() {
 
   pdf.save("Tagesgeld-Sparrechner-Ergebnis.pdf");
 }
+
 
 
 
