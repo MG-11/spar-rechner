@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tagesgeld Sparrechner – Vermögensentwicklung berechnen</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- PDF -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Tagesgeld Sparrechner</h1>
+    <p class="subtitle">Realistische Vermögensentwicklung inkl. Inflation</p>
+
+    <!-- Presets -->
+    <div class="presets">
+      <button type="button" onclick="preset('anfänger')">Anfänger</button>
+      <button type="button" onclick="preset('durchschnitt')">Durchschnitt</button>
+      <button type="button" onclick="preset('fire')">FIRE</button>
+    </div>
+
+    <form id="etfForm">
+      <label>Startkapital (€)
+        <input type="number" id="startkapital" value="0">
+      </label>
+
+      <label>Monatliche Sparrate (€)
+        <input type="number" id="sparrate" value="150">
+      </label>
+
+      <label>Laufzeit (Jahre)
+        <input type="number" id="laufzeit" value="30">
+      </label>
+
+      <label>Zinssatz (% p.a.)
+        <input type="number" id="zins" value="2.5" step="0.1">
+      </label>
+
+      <label>Jährliche Sparraten-Steigerung (%)
+        <input type="number" id="steigerung" value="2" step="0.1">
+      </label>
+
+
+      <label>Inflation (% p.a.)
+        <input type="number" id="inflation" value="2" step="0.1">
+      </label>
+
+      <button type="submit">Berechnen</button>
+    </form>
+
+    <div id="ergebnis" class="ergebnis"></div>
+
+    <button id="pdfBtn" onclick="exportPDF()">📄 Ergebnis als PDF speichern</button>
+
+    <canvas id="chart"></canvas>
+
+    <section class="seo-text">
+  <h2>Tagesgeld-Sparplan berechnen – so funktioniert der Rechner</h2>
+
+  <p>
+    Mit diesem Sparrechner kannst du berechnen, wie sich ein monatlicher
+    Tagesgeld-Sparplan über viele Jahre entwickeln kann. Dabei wird neben
+    dem Zinssatz und der Laufzeit auch die Inflation berücksichtigt.
+  </p>
+
+  <p>
+    Der Rechner zeigt dir sowohl das nominale Endkapital als auch die
+    inflationsbereinigte Kaufkraft. So erhältst du ein realistischeres Bild
+    darüber, wie viel dein Vermögen in Zukunft tatsächlich wert sein könnte.
+  </p>
+
+  <p>
+    Durch den Zinseszinseffekt und regelmäßige
+    Einzahlungen kann auch mit kleinen Beträgen über Jahrzehnte ein
+    beachtliches Vermögen entstehen.
+  </p>
+
+  <p>
+    Hinweis: Die Berechnung basiert auf vereinfachten Annahmen und
+    Durchschnittsrenditen. Sie stellt keine Anlageberatung dar.
+  </p>
+</section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
