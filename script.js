@@ -40,8 +40,6 @@ form.addEventListener("submit", function (e) {
     labels.push("Jahr " + jahr);
     nominal.push(kapital.toFixed(2));
     real.push(realwert.toFixed(2));
-
-    sparrate *= (1 + steigerung);
   }
 
   ergebnis.innerHTML =
@@ -131,4 +129,5 @@ function exportPDF() {
 
   pdf.save("Tagesgeld-Sparrechner-Ergebnis.pdf");
 }
+
 
